@@ -1,0 +1,24 @@
+
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,'Helvetica Neue',Arial,'Noto Sans',sans-serif}
+header{background:#0f766e;color:#fff;padding:16px}
+.container{padding:12px;max-width:1000px;margin:0 auto}
+.section{background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:12px;margin:12px 0;box-shadow:0 1px 2px rgba(0,0,0,.04)}
+label{font-weight:600;font-size:.9rem;margin-bottom:6px;display:block}
+input[type="text"], input[type="date"], textarea, select{width:100%;padding:10px;border:1px solid #cbd5e1;border-radius:10px;font-size:.95rem}
+.row{display:flex;gap:12px;flex-wrap:wrap}
+.row > .col{flex:1 1 240px;min-width:220px}
+button{border:0;border-radius:10px;padding:10px 14px;font-weight:700;cursor:pointer}
+.btn-primary{background:#0f766e;color:#fff}
+.btn-secondary{background:#e2e8f0}
+.table-wrap{overflow:auto;border:1px solid #e5e7eb;border-radius:12px}
+table{width:1200px;border-collapse:collapse;font-size:.9rem}
+th,td{border:1px solid #e5e7eb;padding:8px;vertical-align:top}
+th{background:#f1f5f9;text-align:left}
+tfoot td{font-size:.85rem;color:#475569}
+.badge{display:inline-block;padding:2px 8px;border-radius:999px;background:#0ea5e9;color:#fff;font-size:.75rem;margin-left:6px}
+.actions{display:flex;gap:8px;flex-wrap:wrap}
+.note{font-size:.85rem;color:#475569}
+@media (max-width: 768px){
+  table{width:1000px}
+}
