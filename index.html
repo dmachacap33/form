@@ -3,105 +3,41 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>FS.033 – Inspección de Herramientas</title>
-  <link rel="manifest" href="manifest.json">
-  <meta name="theme-color" content="#0f766e">
+  <title>FS.033 – Plantilla idéntica (fondo PDF)</title>
   <link rel="stylesheet" href="style.css">
-  <!-- html2pdf.js (requerido para exportar a PDF). Se carga desde CDN. Necesita internet. -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" defer></script>
   <script src="script.js" defer></script>
 </head>
 <body>
   <header>
-    <h1 style="margin:0;font-size:1.1rem">FS.033 – Inspección de Herramientas Portátiles y Automáticas</h1>
-    <div style="opacity:.9;font-size:.9rem">INSPECCIÓN DE HERRAMIENTAS PORTÁTILES Y AUTOMÁTICAS (Manuales y eléctricas)</div>
+    <h1>FS.033 – Inspección de Herramientas (Plantilla PDF de fondo)</h1>
   </header>
   <div class="container">
-    <div class="section">
-      <div class="row">
-        <div class="col">
-          <label>Estación / Campamento / Sitio</label>
-          <input id="estacion" type="text" placeholder="Ej.: Estación 12 / Campamento Norte" />
+    <div id="sheet" class="sheet">
+      <div class="bg"></div>
+      <!-- Overlay inputs -->
+      <div class="overlay">
+        <div class="meta">
+          <div class="mcell"><input id="estacion" type="text" placeholder="Estación/Campamento/Sitio"></div>
+          <div class="mcell"><input id="inspector" type="text" placeholder="Inspector"></div>
+          <div class="mcell"><input id="fecha" type="date"></div>
         </div>
-        <div class="col">
-          <label>Inspector</label>
-          <input id="inspector" type="text" placeholder="Nombre y apellido" />
-        </div>
-        <div class="col">
-          <label>Fecha</label>
-          <input id="fecha" type="date" />
-        </div>
-      </div>
-    </div>
 
-    <div class="section">
-      <div class="row" style="align-items:center;justify-content:space-between">
-        <h2 style="margin:0;font-size:1rem">Lista de Verificación <span class="badge">9 preguntas por herramienta</span></h2>
-        <div class="actions">
-          <button class="btn-secondary" onclick="addRow()">Agregar herramienta</button>
-          <button class="btn-secondary" onclick="clearRows()">Limpiar filas</button>
+        <!-- Tabla dinámica (20 filas) alineada a columnas del fondo -->
+        <div id="rows"></div>
+
+        <div class="footer">
+          <input id="firma" type="text" placeholder="Firma V°B° Inspector">
         </div>
       </div>
-      <div class="table-wrap">
-        <table id="tabla">
-          <thead>
-            <tr>
-              <th style="width:54px">Ítem</th>
-              <th style="min-width:200px">Tipo / Clase de herramienta</th>
-              <th style="min-width:180px">Ubicación / Uso</th>
-              <th style="min-width:220px">Q1</th><th style="min-width:220px">Q2</th><th style="min-width:220px">Q3</th><th style="min-width:220px">Q4</th><th style="min-width:220px">Q5</th><th style="min-width:220px">Q6</th><th style="min-width:220px">Q7</th><th style="min-width:220px">Q8</th><th style="min-width:220px">Q9</th>
-              <th style="min-width:220px">Observaciones</th>
-            </tr>
-          </thead>
-          <tbody id="tbody">
-          </tbody>
-          <tfoot>
-            <tr><td colspan="13">
-              <div class="note">
-                <strong>Preguntas:</strong>
-                <ol>
-                  <li>1) ¿Las herramientas manuales (alicates, martillos, punzones,palas, picotas, machetes,etc) tienen sus agarradores/ sujetadores en buen estado de funcionamiento?</li>
-<li>2) ¿Las puntas de las herramientas (mazo, filos, etc) no presentan superficies que podrían desprenderse o romperse?</li>
-<li>3) ¿Las herramientas manuales para trabajos con electricidad presentan sus aislamientos/ coberturas libre de fallas o cortaduras (están integras)?</li>
-<li>4) ¿Las herramientas eléctricas tiene sus cables y conexiones sin roturas o fallas evidentes?</li>
-<li>5) ¿Todo equipo y/o herramienta que necesita un cobertor, funda esta siendo utilizada adecuadamente? (machetes, sierras, cuchillos,etc)</li>
-<li>6) ¿Toda herramienta/ equipo rotativo dispone de su respectiva guarda de protección? (amoladoras, sierra circular, mezcladora,etc)</li>
-<li>7) ¿Las herramientas manuales (llaves de ojo, boca y superficie) tienen sus puntos de contacto libres de roturas, desgaste o falla?</li>
-<li>8) ¿Las herramientas/ equipos están libres de suciedad, grasa o material que pueda dañarlas?</li>
-<li>9) ¿Las herramientas están almacenadas/ ubicadas en lugares accesibles y libre de cualquier afectación o daño?</li>
-                </ol>
-                <div>Nota: La revisión debe ser trimestral. Si una herramienta presenta falla, debe ser retirada y reemplazada.</div>
-              </div>
-            </td></tr>
-          </tfoot>
-        </table>
-      </div>
-    </div>
-
-    <div class="section">
-      <label>Firma V°B° Inspector (escriba nombre o referencia)</label>
-      <input id="firma" type="text" placeholder="Nombre legible del inspector" />
-    </div>
-
-    <div class="section actions">
-      <button class="btn-primary" onclick="exportPDF()">Guardar como PDF</button>
-      <button class="btn-secondary" onclick="sharePDF()">Compartir PDF</button>
-      <button class="btn-secondary" onclick="saveLocal()">Guardar local</button>
-      <button class="btn-secondary" onclick="loadLocal()">Cargar local</button>
-      <button class="btn-secondary" onclick="resetForm()">Reiniciar</button>
-    </div>
-
-    <div class="section note">
-      <strong>Consejos de uso en móvil:</strong>
-      <ul>
-        <li>Instale esta app en su pantalla de inicio (menú del navegador → “Agregar a pantalla de inicio”).</li>
-        <li>Para exportar a PDF se requiere conexión a internet (se carga la librería html2pdf desde CDN).</li>
-        <li>Los datos se guardan localmente (no salen de su dispositivo) hasta que usted decida compartir el PDF.</li>
-      </ul>
     </div>
   </div>
-  <script>
-    if ('serviceWorker' in navigator) { navigator.serviceWorker.register('./service-worker.js'); }
-  </script>
+
+  <div class="controls">
+    <button class="btn-secondary" onclick="addRow()">Agregar fila</button>
+    <button class="btn-secondary" onclick="clearRows()">Limpiar filas</button>
+    <button class="btn-primary" onclick="exportPDF()">Guardar como PDF</button>
+    <button class="btn-secondary" onclick="window.print()">Imprimir PDF</button>
+  </div>
 </body>
 </html>
