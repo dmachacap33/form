@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>FS.033 – Plantilla corporativa (PDF 1:1)</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" defer></script>
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header><h1>FS.033 – Inspección de Herramientas (Plantilla PDF corporativa 1:1)</h1></header>
+  <div class="container">
+    <div id="sheet" class="sheet">
+      <div class="bg"></div>
+      <div class="overlay">
+        <!-- Cabecera -->
+        <div class="meta-row">
+          <input id="estacion" type="text" placeholder="Estación/Campamento/Sitio">
+          <input id="inspector" type="text" placeholder="Inspector">
+          <input id="fecha" type="date">
+        </div>
+        <!-- Tabla (20 filas) -->
+        <div id="tableArea" class="table-area"></div>
+        <!-- Firma -->
+        <div class="footer">
+          <input id="firma" type="text" placeholder="Firma V°B° Inspector">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="controls">
+    <button class="btn-secondary" onclick="resetRows()">Reiniciar filas (20)</button>
+    <button class="btn-secondary" onclick="saveLocal()">Guardar local</button>
+    <button class="btn-secondary" onclick="loadLocal()">Cargar local</button>
+    <button class="btn-primary" onclick="exportPDF()">Guardar como PDF</button>
+    <button class="btn-secondary" onclick="window.print()">Imprimir PDF</button>
+  </div>
+</body>
+</html>
